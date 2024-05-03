@@ -1,0 +1,23 @@
+﻿<Window x:Class="Flip.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Flip"
+        xmlns:xico="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        Title="About" Background="Transparent" AllowsTransparency="True" Height="300" Width="310" Topmost="true" WindowStartupLocation="CenterScreen" WindowStyle="None" MouseLeftButtonDown="Window_MouseLeftButtonDown">
+    <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Background="{StaticResource BackgroundBrush}" CornerRadius="5">
+        <StackPanel Orientation="Vertical">
+            <Label Content="{xico:Material Kind=Plus,RotationAngle=45}" HorizontalAlignment="Right" Foreground="IndianRed" x:Name="Close" MouseLeftButtonDown="Close_MouseLeftButtonDown"/>
+            <Image Source="Icon00.png" Width="150" Height="150" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label HorizontalAlignment="Center"  Content="Flip | Free translator" Foreground="White" FontFamily="Nirmala UI" FontSize="18" FontWeight="Bold"/>
+            <Label Margin="0 10 0 0"  Content="Developed by CodeDeity with love" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontFamily="MV Boli" FontSize="18"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label Content="{xico:Material Kind=Github,Width=20,Height=20}" Foreground="RoyalBlue" x:Name="Github" MouseLeftButtonDown="Github_MouseLeftButtonDown"/>
+                <Label Content="{xico:Material Kind=Heart,Width=20,Height=20}" Foreground="IndianRed"/>
+            </StackPanel>
+            <Label HorizontalAlignment="Center" Margin="0 10 0 0"  Content="version 1.1 Beta --Special Build--" Foreground="White" FontFamily="Bahnschrift"/>
+        </StackPanel>
+    </Border>
+</Window>

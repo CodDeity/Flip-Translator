@@ -1,0 +1,74 @@
+﻿<Window x:Class="Flip.Settings.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Flip.Settings"
+        xmlns:xico="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        xmlns:Elements="clr-namespace:Flip.Controls"
+        Title="Flip Settings" Height="320" Width="500" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" ShowInTaskbar="False" WindowStyle="ToolWindow" Topmost="True">
+    <Grid Background="{StaticResource BackgroundBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Margin="0 8 1 0">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="{xico:Material Kind=Earth,Width=25,Height=25}" Foreground="SeaGreen"/>
+                <Label FontSize="15" Foreground="{StaticResource ForegroundBrush}" Content="Network Settings" FontWeight="Bold"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5 10 0 0">
+                <Elements:FlipBox HelperContent="Http Proxy Host" x:Name="ProxyHost" Width="130"/>
+                <Elements:FlipBox IsNumericalInput="True" HelperContent="Proxy Port" x:Name="ProxyPort" Width="100" Margin="3 0 0 0"/>
+                <StackPanel.ToolTip>
+                    <ToolTip Background="{StaticResource BackgroundBrush}" BorderBrush="{StaticResource PrimaryBrush}" Foreground="{StaticResource ForegroundBrush}" Content="Http proxy will apply after restart." FontFamily="Segoe UI Semibold" FontSize="14"/>
+                </StackPanel.ToolTip>
+            </StackPanel>
+            <CheckBox Content="Alert Connectivity Change" x:Name="AlertConnection" Margin="5 10 0 0"/>
+            <StackPanel Orientation="Horizontal" Margin="0 20 0 0">
+                <Label Content="{xico:Material Kind=Book,Width=25,Height=25}" Foreground="IndianRed"/>
+                <Label FontSize="15" Foreground="{StaticResource ForegroundBrush}" Content="Data Collecting Behavior" FontWeight="Bold"/>
+            </StackPanel>
+            <CheckBox Content="Store Single word Translations" x:Name="storeSingleWord" Margin="5 10 0 0"/>
+            <CheckBox Content="Store Clipboard Data" x:Name="storeClipboardData" Margin="5 10 0 0"/>
+            <Button Visibility="Collapsed" Margin="5 10 0 0" x:Name="ResetSavedData" Click="ResetSavedData_Click">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{xico:Material Kind=Refresh}" Foreground="Orange"/>
+                        <Label Content="Reset Data" Foreground="{StaticResource ForegroundBrush}" FontSize="14"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Margin="1 8 1 0">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="{xico:Material Kind=Translate,Width=25,Height=25}" Foreground="Teal"/>
+                <Label FontSize="15" Foreground="{StaticResource ForegroundBrush}" Content="Translation Settings" FontWeight="Bold"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5 10 0 0">
+                <Label Content="Translation Api: " Foreground="{StaticResource ForegroundBrush}" FontSize="15"/>
+                <ComboBox x:Name="TranslationApi"/>
+            </StackPanel>
+            <CheckBox x:Name="TryUseOffline" Content="Try to Use offline data" Margin="5 10 0 0"/>
+            <CheckBox x:Name="ClipInterceptOnStart" Content="Clipboard intercept at startup" Margin="5 10 0 0"/>
+            <CheckBox x:Name="FilterInvalidChar" Content="Filter for invalid chars" Margin="5 10 0 0"/>
+            <Button Visibility="Collapsed" HorizontalAlignment="Left" Margin="5 10 0 0" x:Name="OpenSavedData" Click="OpenSavedData_Click">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{xico:Material Kind=Folder}" Foreground="Orange"/>
+                        <Label Content="Open Saved Data in Editor" Foreground="{StaticResource ForegroundBrush}" FontSize="14"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button HorizontalAlignment="Center" Margin="5 20 0 0" x:Name="SaveSettings" Click="SaveSettings_Click">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{xico:Material Kind=ContentSave}" Foreground="RoyalBlue"/>
+                        <Label Content="Save Settings" Foreground="{StaticResource ForegroundBrush}" FontSize="14"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>
