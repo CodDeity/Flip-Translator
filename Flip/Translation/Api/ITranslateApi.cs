@@ -8,7 +8,7 @@ namespace Flip.Translation.Api
 {
     public interface ITranslateApi
     {
-        public Task<TranslationModel?> GetTranslate(string text,Language from,Language to);
+        public Task<TranslationModel?> GetTranslate(string text,string from,string to);
         public void CancelOperation();
         public long GetPingToApi();
         public Task<bool?> CheckApi();

@@ -26,7 +26,9 @@ namespace Flip.Settings
         public bool TryOfflineUse { get; set; } = false;
         public bool ClipInterceptOnStart { get; set; } = false;
         public bool FilterInvalidChar { get; set; } = true;
-        
+        public string FromLanguage { get; set; } = "English";
+        public string ToLanguage { get; set; } = "Persian";
+
         public static void SaveSettings(GlobalSettings settings)
         {
             File.Delete(SavePath);

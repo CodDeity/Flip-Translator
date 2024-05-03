@@ -15,12 +15,12 @@ namespace Flip.Translation
         private static GoogleApi googleApi = new GoogleApi();
         private static DuckDuckGoApi duckDuckGoApi = new DuckDuckGoApi();
         
-        public async static Task<TranslationModel?> Translate(string text, Language from, Language to,bool fromClipboard = false)
+        public async static Task<TranslationModel?> Translate(string text, string from, string to,bool fromClipboard = false)
         {
             TranslateApi api = GlobalSettings.Settings.TranslateApi;
             return await Translate(text, from, to, api,fromClipboard);
         }
-        public async static Task<TranslationModel?> Translate(string Text, Language from,Language to,TranslateApi TranslateApi,bool fromClipboard = false)
+        public async static Task<TranslationModel?> Translate(string Text, string from,string to,TranslateApi TranslateApi,bool fromClipboard = false)
         {
             if (GlobalSettings.Settings.TryOfflineUse)
             {

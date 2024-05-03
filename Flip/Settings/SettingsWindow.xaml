@@ -47,7 +47,7 @@
                 <Label FontSize="15" Foreground="{StaticResource ForegroundBrush}" Content="Translation Settings" FontWeight="Bold"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5 10 0 0">
-                <Label Content="Translation Api: " Foreground="{StaticResource ForegroundBrush}" FontSize="15"/>
+                <Label Content="Api: " Foreground="{StaticResource ForegroundBrush}" FontSize="15"/>
                 <ComboBox x:Name="TranslationApi"/>
             </StackPanel>
             <CheckBox x:Name="TryUseOffline" Content="Try to Use offline data" Margin="5 10 0 0"/>

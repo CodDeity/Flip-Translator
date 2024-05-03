@@ -93,7 +93,7 @@ namespace Flip.Controls
         }
         public bool Focus()
         {
-            if (this.IsInitialized)
+            if (this.IsInitialized && this.ActualHeight != 0 && this.ActualWidth != 0)
                 return textbox.Focus();
             else return false;
         }

@@ -47,7 +47,7 @@ namespace Flip.Translation.Api
 
         public async Task<bool?> CheckApi()
         {
-            return (await this.GetTranslate("Examinate", Language.En, Language.Fa))?.Success;
+            return (await this.GetTranslate("Examinate", Languages.LanguageList["English"], Languages.LanguageList["Persian"]))?.Success;
         }
 
         public long GetPingToApi()
@@ -82,11 +82,11 @@ namespace Flip.Translation.Api
             }
         }
 
-        public async Task<TranslationModel?> GetTranslate(string text, Language from, Language to)
+        public async Task<TranslationModel?> GetTranslate(string text, string from, string to)
         {
             try
             {
-                string PostUrl = $"https://duckduckgo.com/translation.js?vqd=4-82492802282990933213578594351879680983&query=translate&from={from.ToString().ToLower()}&to={to.ToString().ToLower()}";
+                string PostUrl = $"https://duckduckgo.com/translation.js?vqd=4-82492802282990933213578594351879680983&query=translate&from={from.ToLower()}&to={to.ToLower()}";
                 HttpResponseMessage rsp = await this.HttpClient.PostAsync(PostUrl, new StringContent(text, new MediaTypeHeaderValue("text/plain")), cancellationTokenSource.Token);
                 string rspText = await rsp.Content.ReadAsStringAsync();
                 if (rsp.StatusCode != System.Net.HttpStatusCode.OK)

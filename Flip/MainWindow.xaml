@@ -37,13 +37,13 @@
                         <TextBlock x:Name="alertText" VerticalAlignment="Center" Foreground="{StaticResource ForegroundBrush}" FontFamily="Segoe UI Semibold"/>
                     </StackPanel>
                 </Border>
-                <StackPanel Background="{StaticResource BackgroundBrush}" Grid.Row="1"  Orientation="Horizontal" VerticalAlignment="Center" Margin="5 0 0 0">
-                    <StackPanel.ContextMenu>
+                <Border Background="{StaticResource BackgroundBrush}" Grid.Row="1">
+                    <Border.ContextMenu>
                         <ContextMenu x:Name="MenuContext">
                             <StackPanel x:Name="ClipInterceptMenuItem" MouseLeftButtonDown="ClipInterceptMenuItem_Click">
                                 <StackPanel x:Name="ClipInterceptOn" Visibility="Collapsed" Orientation="Horizontal">
-                                        <Label Foreground="SeaGreen" Content="{xico:Material Kind=Clipboard}"/>
-                                        <Label Foreground="{DynamicResource ForegroundBrush}" Content="Turn on Clipboard Intercept"/>
+                                    <Label Foreground="SeaGreen" Content="{xico:Material Kind=Clipboard}"/>
+                                    <Label Foreground="{DynamicResource ForegroundBrush}" Content="Turn on Clipboard Intercept"/>
                                 </StackPanel>
                                 <StackPanel x:Name="ClipInterceptOff" Visibility="Collapsed" Orientation="Horizontal">
                                     <Label Foreground="IndianRed" Content="{xico:Material Kind=ClipboardOff}"/>
@@ -53,16 +53,21 @@
                             <MenuItem Header="Show Settings" x:Name="SettingsMenuItem" Click="SettingsMenuItem_Click"/>
                             <MenuItem Header="About" x:Name="AboutContextMenu" Click="AboutContextMenu_Click"/>
                         </ContextMenu>
-                    </StackPanel.ContextMenu>
-                    <Border Background="{DynamicResource SelectedBrush}" CornerRadius="10">
-                        <ComboBox x:Name="FromLanguage"/>
-                    </Border>
-                    <Label Content="{xico:Material Kind=ArrowRight}" VerticalContentAlignment="Center" x:Name="Arrow" MouseLeftButtonDown="Arrow_MouseLeftButtonDown" Foreground="{DynamicResource PrimaryBrush}"/>
-                    <Border Background="{DynamicResource SelectedBrush}" CornerRadius="10">
-                        <ComboBox x:Name="ToLanguage"/>
-                    </Border>
-                    <Label Foreground="IndianRed" Visibility="Collapsed" x:Name="NoInternet" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{xico:Material Kind=EarthOff}"/>
-                </StackPanel>
+                    </Border.ContextMenu>
+                    <StackPanel HorizontalAlignment="Center"  Grid.Row="1"  Orientation="Horizontal" VerticalAlignment="Center" Margin="5 0 0 0">
+                        <Border Background="{DynamicResource SelectedBrush}" CornerRadius="10">
+                            <ComboBox Width="150" SelectionChanged="FromLanguage_SelectionChanged"  x:Name="FromLanguage"/>
+                        </Border>
+                        <Grid VerticalAlignment="Center">
+                            <Label Content="{xico:Material Kind=ArrowRight}" x:Name="Arrow" MouseLeftButtonDown="Arrow_MouseLeftButtonDown" Foreground="{StaticResource PrimaryBrush}"/>
+                            <Label Content="{xico:Material Kind=ArrowLeft}" Margin="0 13 0 0" MouseLeftButtonDown="Arrow_MouseLeftButtonDown" Foreground="{StaticResource PrimaryBrush}"/>
+                        </Grid>
+                        <Border Background="{DynamicResource SelectedBrush}" CornerRadius="10">
+                            <ComboBox Width="150" SelectionChanged="ToLanguage_SelectionChanged" x:Name="ToLanguage"/>
+                        </Border>
+                        <Label Foreground="IndianRed" Visibility="Collapsed" x:Name="NoInternet" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{xico:Material Kind=EarthOff}"/>
+                    </StackPanel>
+                </Border>
                 <StackPanel Grid.Row="0">
                     <StackPanel  Orientation="Horizontal">
                         <Label Content=">" FontFamily="Gadugi" FontWeight="Bold" FontSize="25" VerticalAlignment="Top" Foreground="{DynamicResource PrimaryBrush}"/>
@@ -70,18 +75,7 @@
                     </StackPanel>
                     <StackPanel Orientation="Vertical">
                         <Label HorizontalContentAlignment="Right" x:Name="mainTranslation" Foreground="{DynamicResource ForegroundBrush}" FontFamily="Bahnschrift SemiBold SemiCondensed" FontSize="25" Height="60" VerticalAlignment="Top"/>
-                        <StackPanel ToolTipService.BetweenShowDelay="3500" ToolTipService.ShowDuration="3000" ToolTipService.InitialShowDelay="5000" Orientation="Vertical" x:Name="OtherTranslations"/>
-                        <StackPanel.ToolTip>
-                            <ToolTip Background="{StaticResource BackgroundBrush}" BorderBrush="{StaticResource PrimaryBrush}">
-                                <StackPanel Orientation="Vertical">
-                                    <StackPanel Orientation="Horizontal">
-                                        <Label Foreground="{DynamicResource ForegroundBrush}" Content="{xico:Material Kind=Database}"/>
-                                        <Label Foreground="{DynamicResource ForegroundBrush}" Content="Translation Source: "/>
-                                        <Label x:Name="TranslationSource" Foreground="{DynamicResource ForegroundBrush}" Content="-"/>
-                                    </StackPanel>
-                                </StackPanel>
-                            </ToolTip>
-                        </StackPanel.ToolTip>
+                        <StackPanel Orientation="Vertical" x:Name="OtherTranslations"/>
                     </StackPanel>
                 </StackPanel>
             </Grid>

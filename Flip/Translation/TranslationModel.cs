@@ -11,8 +11,8 @@ namespace Flip.Translation
     {
         public string? Text { get; set; }
         public List<string>? Translations { get; set; }
-        public Language from { get; set; }
-        public Language to { get; set; }
+        public string from { get; set; }
+        public string to { get; set; }
         public bool Success { get; set; }
         public string? ExceptionMessage { get; set; }
         public TranslateApi TranslateApi { get; set; }

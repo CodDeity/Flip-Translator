@@ -48,7 +48,7 @@ namespace Flip.Translation.Api
 
         public async Task<bool?> CheckApi()
         {
-            return (await this.GetTranslate("Examinate", Language.En, Language.Fa))?.Success;
+            return (await this.GetTranslate("Examinate", Languages.LanguageList["English"], Languages.LanguageList["Persian"]))?.Success;
         }
 
         public long GetPingToApi()
@@ -92,7 +92,7 @@ namespace Flip.Translation.Api
             }
         }
         
-        public async Task<TranslationModel?> GetTranslate(string text, Language from, Language to)
+        public async Task<TranslationModel?> GetTranslate(string text, string from, string to)
         {
             try
             {

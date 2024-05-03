@@ -19,8 +19,6 @@ namespace Flip
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Language from;
-        private Language to;
         private List<char> filtered = new List<char>()
         {
             ':',
@@ -73,14 +71,13 @@ namespace Flip
             this.Activated += (s, e) => this.Activate();
             this.Activated += (s, e) => TextBox.Focus();
 
-            var languages = Enum.GetValues<Language>();
-            foreach ( var language in languages )
+            foreach ( var language in Languages.LanguageList)
             {
-                FromLanguage.Items.Add( language );
-                ToLanguage.Items.Add(language );
+                FromLanguage.Items.Add( language.Key );
+                ToLanguage.Items.Add(language.Key );
             }
-            FromLanguage.SelectedIndex = 1;
-            ToLanguage.SelectedIndex = 0;
+            FromLanguage.SelectedItem = GlobalSettings.Settings.FromLanguage;
+            ToLanguage.SelectedItem = GlobalSettings.Settings.ToLanguage;
         }
         bool Observing = false;
         CancellationTokenSource ConnectionCheckerCancellationToken = new CancellationTokenSource();
@@ -191,6 +188,7 @@ namespace Flip
         }
         private void AddOtherTranslations(List<string> translations)
         {
+            RemoveOtherTranslations();
             StackPanel CurrentPanel = new StackPanel() { 
                 Orientation = Orientation.Horizontal,
                 HorizontalAlignment = HorizontalAlignment.Right
@@ -249,21 +247,23 @@ namespace Flip
             {
                 try
                 {
-                    Language from = (Language)FromLanguage.SelectedItem;
-                    Language to = (Language)ToLanguage.SelectedItem;
+                    string from = Languages.LanguageList[FromLanguage.SelectedItem.ToString()];
+                    string to = Languages.LanguageList[ToLanguage.SelectedItem.ToString()];
                     if (fromClipboard)
                         this.TextBox.Text = $"{text} ";
                     TranslationModel? translationModel = await Translator.Translate(text, from, to, fromClipboard);
                     if (translationModel != null && translationModel.Success)
                     {
-                        mainTranslation.Content = translationModel.Translations[0];
-                        if (translationModel.Translations.Count > 1)
-                            AddOtherTranslations(translationModel.Translations);
-                        if (translationModel.Translations.Count == 1)
+                        if (TextBox.Text == text)
                         {
-                            RemoveOtherTranslations();
+                            mainTranslation.Content = translationModel.Translations[0];
+                            if (translationModel.Translations.Count > 1)
+                                AddOtherTranslations(translationModel.Translations);
+                            if (translationModel.Translations.Count == 1)
+                            {
+                                RemoveOtherTranslations();
+                            }
                         }
-                        TranslationSource.Content = translationModel.TranslateApi;
                     }
                     else
                     {
@@ -310,8 +310,8 @@ namespace Flip
         }
         private void Arrow_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Language from = (Language)FromLanguage.SelectedItem;
-            Language to = (Language)ToLanguage.SelectedItem;
+            string from = FromLanguage.SelectedItem.ToString();
+            string to = ToLanguage.SelectedItem.ToString();
             FromLanguage.SelectedItem = to;
             ToLanguage.SelectedItem = from;
         }
@@ -344,6 +344,42 @@ namespace Flip
         {
             About aboutWindow = new About();
             aboutWindow.ShowDialog();
+        }
+
+        private void FromLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ToLanguage.SelectedItem != null)
+            {
+                if (FromLanguage.SelectedItem.ToString() == ToLanguage.SelectedItem.ToString())
+                {
+                    ToLanguage.SelectedItem = e.RemovedItems[0];
+                }
+                if (FromLanguage.SelectedItem != null && FromLanguage.SelectedItem != ToLanguage.SelectedItem)
+                {
+                    GlobalSettings.Settings.FromLanguage = FromLanguage.SelectedItem.ToString();
+                    GlobalSettings.SaveSettings(GlobalSettings.Settings);
+                }
+                DisplayTranslate(TextBox.Text);
+                TextBox.Focus();
+            }
+        }
+
+        private void ToLanguage_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (FromLanguage.SelectedItem != null)
+            {
+                if (FromLanguage.SelectedItem.ToString() == ToLanguage.SelectedItem.ToString())
+                {
+                    FromLanguage.SelectedItem = e.RemovedItems[0];
+                }
+                if (FromLanguage.SelectedItem != null && FromLanguage.SelectedItem != ToLanguage.SelectedItem)
+                {
+                    GlobalSettings.Settings.ToLanguage = ToLanguage.SelectedItem.ToString();
+                    GlobalSettings.SaveSettings(GlobalSettings.Settings);
+                }
+                DisplayTranslate(TextBox.Text);
+                TextBox.Focus();
+            }
         }
     }
 }

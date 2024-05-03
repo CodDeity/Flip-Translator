@@ -37,7 +37,7 @@ namespace Flip.Translation
             }
             return lines;
         }
-        private static (bool, string) ContainTranslation(string text, Language src)
+        private static (bool, string) ContainTranslation(string text, string src)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace Flip.Translation
                     Match match = Regex.Match(line, "(.*?) \\((.*?)\\):");
                     if (match.Success)
                     {
-                        if (match.Groups[1].Value.Replace(" ","") == text && match.Groups[2].Value == src.ToString())
+                        if (match.Groups[1].Value.Replace(" ","") == text && match.Groups[2].Value == src)
                         {
                             Contained = true;
                             ParsedLine = line;
@@ -74,10 +74,6 @@ namespace Flip.Translation
                 StreamWriter.Flush();
             }
         }
-        private static T ConvertToEnum<T>(string value)
-        {
-            return (T)Enum.Parse(typeof(T), value, true);
-        }
         private static TranslationModel? ParseDown(string parsedText)
         {
             if (string.IsNullOrEmpty(parsedText))
@@ -88,15 +84,15 @@ namespace Flip.Translation
                 TranslationModel translationModel = new TranslationModel(true)
                 {
                     Text = match.Groups[1].Value,
-                    from = ConvertToEnum<Language>(match.Groups[2].Value),
+                    from = match.Groups[2].Value,
                     Translations = new List<string>() { match.Groups[3].Value },
-                    to = ConvertToEnum<Language>(match.Groups[4].Value)
+                    to = match.Groups[4].Value
                 };
                 return translationModel;
             }
             return null;
         }
-        public static TranslationModel? Get(string text,Language src ,Language dst)
+        public static TranslationModel? Get(string text,string src ,string dst)
         {
             (bool ,string ) ContainedStruct = ContainTranslation(text,src);
             TranslationModel? translation = ParseDown(ContainedStruct.Item2);
