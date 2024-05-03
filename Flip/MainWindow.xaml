@@ -11,8 +11,8 @@
     <Border Background="{DynamicResource BackgroundBrush}" CornerRadius="5" BorderThickness="2">
         <Border.BorderBrush>
             <LinearGradientBrush>
-                <GradientStop Color="SeaGreen" Offset="1"/>
-                <GradientStop Color="BlueViolet" Offset="0"/>
+                <GradientStop Color="RoyalBlue" Offset="1"/>
+                <GradientStop Color="MediumSlateBlue" Offset="0"/>
             </LinearGradientBrush>
         </Border.BorderBrush>
         <Grid>
