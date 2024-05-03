@@ -7,78 +7,70 @@
         xmlns:Elements="clr-namespace:Flip.Controls"
         mc:Ignorable="d"
         xmlns:xico="http://metro.mahapps.com/winfx/xaml/iconpacks"
-        Title="MainWindow" Focusable="True" Background="Transparent" KeyDown="Window_KeyDown" MouseLeftButtonDown="Window_MouseLeftButtonDown" Topmost="True" ShowInTaskbar="True" AllowsTransparency="True" Height="210" Width="450" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Border Background="{DynamicResource BackgroundBrush}" CornerRadius="10" BorderThickness="1">
+        Title="MainWindow" Focusable="True" Background="Transparent" KeyDown="Window_KeyDown" MouseLeftButtonDown="Window_MouseLeftButtonDown" Topmost="True" ShowInTaskbar="True" AllowsTransparency="True" Height="240" Width="450" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Border Background="{DynamicResource BackgroundBrush}" CornerRadius="5" BorderThickness="2">
         <Border.BorderBrush>
             <LinearGradientBrush>
-                <GradientStop Color="DodgerBlue" Offset="0"/>
-                <GradientStop Color="RoyalBlue" Offset="1"/>
+                <GradientStop Color="SeaGreen" Offset="1"/>
+                <GradientStop Color="BlueViolet" Offset="0"/>
             </LinearGradientBrush>
         </Border.BorderBrush>
-        <Border Background="{DynamicResource BackgroundBrush}" CornerRadius="10" BorderThickness="1">
-            <Border.BorderBrush>
-                <LinearGradientBrush>
-                    <GradientStop Color="DodgerBlue" Offset="1"/>
-                    <GradientStop Color="RoyalBlue" Offset="0"/>
-                </LinearGradientBrush>
-            </Border.BorderBrush>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition Height="50"/>
-                </Grid.RowDefinitions>
-                <Border x:Name="alertbox" Focusable="True" Visibility="Collapsed" FocusVisualStyle="{x:Null}" Height="40" Margin="40 0 40 0" CornerRadius="3" Opacity="0" Background="#000" Panel.ZIndex="1" Grid.RowSpan="2">
-                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-                        <Label VerticalAlignment="Center" Content="{xico:Material Kind=Information}" x:Name="infoicon" Visibility="Visible" Foreground="RoyalBlue"/>
-                        <Label VerticalAlignment="Center" Content="{xico:Material Kind=Alert}" Visibility="{Binding ElementName=infoicon,Path=Visibility,Converter={StaticResource ReverseVisiblity}}" Foreground="Orange"/>
-                        <TextBlock x:Name="alertText" VerticalAlignment="Center" Foreground="{StaticResource ForegroundBrush}" FontFamily="Segoe UI Semibold"/>
-                    </StackPanel>
-                </Border>
-                <Border Background="{StaticResource BackgroundBrush}" Grid.Row="1">
-                    <Border.ContextMenu>
-                        <ContextMenu x:Name="MenuContext">
-                            <StackPanel x:Name="ClipInterceptMenuItem" MouseLeftButtonDown="ClipInterceptMenuItem_Click">
-                                <StackPanel x:Name="ClipInterceptOn" Visibility="Collapsed" Orientation="Horizontal">
-                                    <Label Foreground="SeaGreen" Content="{xico:Material Kind=Clipboard}"/>
-                                    <Label Foreground="{DynamicResource ForegroundBrush}" Content="Turn on Clipboard Intercept"/>
-                                </StackPanel>
-                                <StackPanel x:Name="ClipInterceptOff" Visibility="Collapsed" Orientation="Horizontal">
-                                    <Label Foreground="IndianRed" Content="{xico:Material Kind=ClipboardOff}"/>
-                                    <Label Foreground="{DynamicResource ForegroundBrush}" Content="Turn off Clipboard Intercept"/>
-                                </StackPanel>
-                            </StackPanel>
-                            <MenuItem Header="Show Settings" x:Name="SettingsMenuItem" Click="SettingsMenuItem_Click"/>
-                            <MenuItem Header="About" x:Name="AboutContextMenu" Click="AboutContextMenu_Click"/>
-                        </ContextMenu>
-                    </Border.ContextMenu>
-                    <StackPanel HorizontalAlignment="Center"  Grid.Row="1"  Orientation="Horizontal" VerticalAlignment="Center" Margin="5 0 0 0">
-                        <Border Background="{DynamicResource SelectedBrush}" CornerRadius="10">
-                            <ComboBox Width="150" SelectionChanged="FromLanguage_SelectionChanged"  x:Name="FromLanguage"/>
-                        </Border>
-                        <Grid VerticalAlignment="Center">
-                            <Label Content="{xico:Material Kind=ArrowRight}" x:Name="Arrow" MouseLeftButtonDown="Arrow_MouseLeftButtonDown" Foreground="{StaticResource PrimaryBrush}"/>
-                            <Label Content="{xico:Material Kind=ArrowLeft}" Margin="0 13 0 0" MouseLeftButtonDown="Arrow_MouseLeftButtonDown" Foreground="{StaticResource PrimaryBrush}"/>
-                        </Grid>
-                        <Border Background="{DynamicResource SelectedBrush}" CornerRadius="10">
-                            <ComboBox Width="150" SelectionChanged="ToLanguage_SelectionChanged" x:Name="ToLanguage"/>
-                        </Border>
-                        <Label Foreground="IndianRed" Visibility="Collapsed" x:Name="NoInternet" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{xico:Material Kind=EarthOff}"/>
-                    </StackPanel>
-                </Border>
-                <StackPanel Grid.Row="0">
-                    <StackPanel  Orientation="Horizontal">
-                        <Label Content=">" FontFamily="Gadugi" FontWeight="Bold" FontSize="25" VerticalAlignment="Top" Foreground="{DynamicResource PrimaryBrush}"/>
-                        <Elements:FlipBox TextBoxBase.TextChanged="TextBox_TextChanged" FontFamily="Bahnschrift SemiBold SemiCondensed" FontSize="25" Height="60" VerticalAlignment="Top" x:Name="TextBox" Focusable="True"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical">
-                        <Label HorizontalContentAlignment="Right" x:Name="mainTranslation" Foreground="{DynamicResource ForegroundBrush}" FontFamily="Bahnschrift SemiBold SemiCondensed" FontSize="25" Height="60" VerticalAlignment="Top"/>
-                        <StackPanel Orientation="Vertical" x:Name="OtherTranslations"/>
-                    </StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Border x:Name="alertbox" Focusable="True" Visibility="Collapsed" FocusVisualStyle="{x:Null}" Height="40" Margin="40 0 40 0" CornerRadius="3" Opacity="0" Background="#000" Panel.ZIndex="1" Grid.RowSpan="2">
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                    <Label VerticalAlignment="Center" Content="{xico:Material Kind=Information}" x:Name="infoicon" Visibility="Visible" Foreground="RoyalBlue"/>
+                    <Label VerticalAlignment="Center" Content="{xico:Material Kind=Alert}" Visibility="{Binding ElementName=infoicon,Path=Visibility,Converter={StaticResource ReverseVisiblity}}" Foreground="Orange"/>
+                    <TextBlock x:Name="alertText" VerticalAlignment="Center" Foreground="{StaticResource ForegroundBrush}" FontFamily="Segoe UI Semibold"/>
                 </StackPanel>
-            </Grid>
-        </Border>
+            </Border>
+            <Border Background="{StaticResource BackgroundBrush}" Grid.Row="1">
+                <Border.ContextMenu>
+                    <ContextMenu x:Name="MenuContext">
+                        <StackPanel x:Name="ClipInterceptMenuItem" MouseLeftButtonDown="ClipInterceptMenuItem_Click">
+                            <StackPanel x:Name="ClipInterceptOn" Visibility="Collapsed" Orientation="Horizontal">
+                                <Label Foreground="SeaGreen" Content="{xico:Material Kind=Clipboard}"/>
+                                <Label Foreground="{DynamicResource ForegroundBrush}" Content="Turn on Clipboard Intercept"/>
+                            </StackPanel>
+                            <StackPanel x:Name="ClipInterceptOff" Visibility="Collapsed" Orientation="Horizontal">
+                                <Label Foreground="IndianRed" Content="{xico:Material Kind=ClipboardOff}"/>
+                                <Label Foreground="{DynamicResource ForegroundBrush}" Content="Turn off Clipboard Intercept"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <MenuItem Header="Show Settings" x:Name="SettingsMenuItem" Click="SettingsMenuItem_Click"/>
+                        <MenuItem Header="About" x:Name="AboutContextMenu" Click="AboutContextMenu_Click"/>
+                    </ContextMenu>
+                </Border.ContextMenu>
+                <StackPanel HorizontalAlignment="Center"  Grid.Row="1"  Orientation="Horizontal" VerticalAlignment="Center" Margin="5 0 0 0">
+                    <Border Background="{DynamicResource SelectedBrush}" CornerRadius="10">
+                        <ComboBox Width="150" SelectionChanged="FromLanguage_SelectionChanged"  x:Name="FromLanguage"/>
+                    </Border>
+                    <Grid VerticalAlignment="Center">
+                        <Label Content="{xico:Material Kind=ArrowRight}" x:Name="Arrow" MouseLeftButtonDown="Arrow_MouseLeftButtonDown" Foreground="{StaticResource PrimaryBrush}"/>
+                        <Label Content="{xico:Material Kind=ArrowLeft}" Margin="0 13 0 0" MouseLeftButtonDown="Arrow_MouseLeftButtonDown" Foreground="{StaticResource PrimaryBrush}"/>
+                    </Grid>
+                    <Border Background="{DynamicResource SelectedBrush}" CornerRadius="10">
+                        <ComboBox Width="150" SelectionChanged="ToLanguage_SelectionChanged" x:Name="ToLanguage"/>
+                    </Border>
+                    <Label Foreground="IndianRed" Visibility="Collapsed" x:Name="NoInternet" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{xico:Material Kind=EarthOff}"/>
+                </StackPanel>
+            </Border>
+            <StackPanel Grid.Row="0">
+                <StackPanel  Orientation="Horizontal">
+                    <Label Content=">" FontFamily="Gadugi" FontWeight="Bold" FontSize="25" VerticalAlignment="Top" Foreground="{DynamicResource PrimaryBrush}"/>
+                    <Elements:FlipBox TextBoxBase.TextChanged="TextBox_TextChanged" FontFamily="Bahnschrift SemiBold SemiCondensed" FontSize="25" Height="60" VerticalAlignment="Top" x:Name="TextBox" Focusable="True"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <Label HorizontalContentAlignment="Right" x:Name="mainTranslation" Foreground="{DynamicResource ForegroundBrush}" FontFamily="Bahnschrift SemiBold SemiCondensed" FontSize="25" Height="60" VerticalAlignment="Top"/>
+                    <StackPanel Orientation="Vertical" x:Name="OtherTranslations"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
     </Border>
 </Window>
