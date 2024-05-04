@@ -8,21 +8,17 @@ an Open-Source translator for windows with multiple api for providing accurate w
 
 ## Features
 
-- Hide/Show Translator by pressing Ctrl key two time
-- Store translation
+- Easy to use
+- Support offline translation
 - Multiple language support
 - Clipboard Translating
-
+- Multi-Api for translation
 
 ## Screenshots
 
+![Image1](https://github.com/CodDeity/Flip-Translator/assets/137655218/9b199683-57d5-493f-a0ae-bc035346c225)
 
-![Image2](https://github.com/CodDeity/Flip-Translator/assets/137655218/2cfcd1a5-d5cf-484f-a904-27b1d3904867)
-
-
-![Image1](https://github.com/CodDeity/Flip-Translator/assets/137655218/a6a2d5d4-0309-4ffb-ba07-7467fc0f5b56)
-
-
+![Image2](https://github.com/CodDeity/Flip-Translator/assets/137655218/28b17170-8c0b-4324-9508-e0cfffc52430)
 
 
 ## Build
