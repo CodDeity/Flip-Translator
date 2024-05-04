@@ -1,9 +1,7 @@
 
 # Flip Translator
 
-an Open-Source translator for windows with multiple api for providing accurate word translation
-
-
+An Open-Source translator for windows with multiple api for providing accurate word translation
 
 
 ## Features
@@ -27,14 +25,10 @@ Just clone the repository and Build. it will install the missing packages by it 
 
 ## Usage
 
-- download a snapshot from github and after extract run Flip.exe to lunch the app.
-
-- press CTRL twice to hide / show the application
-
-- if you want to use Clipboard translation right click on bottom side and Enable it !
-
-- to use offline translation make sure that you enabled the Storing word option and TryOffline in settings.
-
-- try to not use it for translating long sentences.
-
+- Download a snapshot from github and after extract run Flip.exe to lunch the app.
+- Press CTRL twice to hide / show the application
+- If you want to use Clipboard translation right click on bottom side and Enable it !
+- To use offline translation make sure that you enabled the Storing word option and TryOffline in settings.
+- Try to not use it for translating long sentences.
+- Its important to know after each word put a space to translate except it wont translate.
 
