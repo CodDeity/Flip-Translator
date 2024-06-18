@@ -81,7 +81,7 @@ namespace Flip
         }
         bool Observing = false;
         CancellationTokenSource ConnectionCheckerCancellationToken = new CancellationTokenSource();
-        bool Connected = true;
+        bool Connected = false;
         [DllImport("wininet.dll")]
         public extern static bool InternetGetConnectedState(out int Description, int ReservedValue);
         private bool checkConnection()

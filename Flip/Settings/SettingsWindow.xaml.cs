@@ -38,7 +38,9 @@ namespace Flip.Settings
             {
                 if (api == TranslateApi.OfflineDataBase)
                     continue;
-                TranslationApi.Items.Add(api);
+            //this is a temporary solution for DockDuckGo api problem
+                if(api != TranslateApi.DuckDuckgo)
+                    TranslationApi.Items.Add(api);
                 if(api == GlobalSettings.Settings.TranslateApi)
                     TranslationApi.SelectedItem = api;
             }

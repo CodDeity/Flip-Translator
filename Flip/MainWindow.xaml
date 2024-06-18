@@ -8,13 +8,7 @@
         mc:Ignorable="d"
         xmlns:xico="http://metro.mahapps.com/winfx/xaml/iconpacks"
         Title="MainWindow" Focusable="True" Background="Transparent" KeyDown="Window_KeyDown" MouseLeftButtonDown="Window_MouseLeftButtonDown" Topmost="True" ShowInTaskbar="True" AllowsTransparency="True" Height="240" Width="450" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Border Background="{DynamicResource BackgroundBrush}" CornerRadius="5" BorderThickness="2">
-        <Border.BorderBrush>
-            <LinearGradientBrush>
-                <GradientStop Color="RoyalBlue" Offset="1"/>
-                <GradientStop Color="MediumSlateBlue" Offset="0"/>
-            </LinearGradientBrush>
-        </Border.BorderBrush>
+    <Border Background="{DynamicResource BackgroundBrush}" BorderBrush="RoyalBlue" CornerRadius="25" BorderThickness="2" Padding="10 0 10 10">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
