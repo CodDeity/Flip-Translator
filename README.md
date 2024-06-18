@@ -13,15 +13,16 @@ An Open-Source translator for windows with multiple api for providing accurate w
 - Multi-Api for translation
 
 ## Screenshots
+![T1](https://github.com/CodDeity/Flip-Translator/assets/137655218/2fb17ab1-e986-44dd-940c-538a11b6f0e1)
 
-![Image1](https://github.com/CodDeity/Flip-Translator/assets/137655218/9b199683-57d5-493f-a0ae-bc035346c225)
+![T2](https://github.com/CodDeity/Flip-Translator/assets/137655218/54d4a82a-fcfa-4fba-b83d-a578182ab2dd)
 
-![Image2](https://github.com/CodDeity/Flip-Translator/assets/137655218/28b17170-8c0b-4324-9508-e0cfffc52430)
 
 
 ## Build
 Just clone the repository and Build. it will install the missing packages by it self.
 
+Attention: please build FlipIntercept library before debuging the app.
 
 ## Usage
 
